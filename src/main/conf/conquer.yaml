@@ -1,0 +1,26 @@
+index:
+  attributes-order: []
+
+http:
+  bind-host: 127.0.0.1
+  bind-port: 8080
+
+rules-topic:
+  name: rules
+  replication: 1
+
+input-topic:
+  name: events
+  partitions: 1
+  replication: 1
+
+output-topic:
+  name: actions
+  partitions: 1
+  replication: 1
+
+schema-registry:
+  url: http://127.0.0.1:8081
+
+kafka:
+  "bootstrap.servers": "127.0.0.1:9092"

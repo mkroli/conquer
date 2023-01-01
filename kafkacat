@@ -1,0 +1,15 @@
+#!/bin/sh
+
+alias kafkacat='docker run --rm --network=host edenhill/kcat:1.7.1 -b 127.0.0.1'
+
+case $1 in
+rules|actions|forward_json)
+  kafkacat -C -Zu -K : -t "${1}"
+  ;;
+events|forward)
+  kafkacat -C -s avro -r localhost:8081 -Zu -K : -t "${1}"
+  ;;
+*)
+  kafkacat "$@"
+  ;;
+esac
